@@ -1,23 +1,27 @@
 package omg.pub.mylist;
-import android.widget.*;
-import android.view.*;
-import android.content.*;
-import android.app.*;
-import java.util.zip.*;
-import android.graphics.*;
-import java.util.*;
 
-public class MyCustomAdapter extends ArrayAdapter<ArrayList<ListItem>>
-{
+import android.app.Activity;
+import android.content.Context;
+import android.graphics.Color;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
+import android.widget.ArrayAdapter;
+import android.widget.LinearLayout;
+import android.widget.TextView;
+
+import java.util.ArrayList;
+
+public class MyCustomAdapter extends ArrayAdapter<ListItem> {
 
 		Context context; 
 		int layoutResourceId;    
 		ArrayList<ListItem> data = null;
 		
 		public MyCustomAdapter(Context context, int layoutResourceId, ArrayList<ListItem> data) {
-			super(context,layoutResourceId,data);
-			this.layoutResourceId = layoutResourceId;
-			this.context = context;
+            super(context, layoutResourceId, data);
+            this.layoutResourceId = layoutResourceId;
+            this.context = context;
 			this.data = data;
 			
 			
