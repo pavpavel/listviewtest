@@ -5,23 +5,39 @@
 	android:orientation="vertical"
 	android:layout_width="match_parent"
 	android:layout_height="match_parent"
-	android:padding="10dp"
-	android:background="#FDFDFD">
+	android:padding="10dp">
 
-	<TextView
-		android:id="@+id/txtTitle"
+	<LinearLayout
+		android:id="@+id/heading"
+		android:orientation="vertical"
 		android:layout_width="fill_parent"
-		android:layout_height="wrap_content"
-		android:gravity="center_vertical"
-		android:layout_alignParentTop="true"
-		android:layout_alignParentBottom="true"
-		android:textStyle="bold"
-		android:textSize="16dp"
-		android:textColor="#000000"
-		android:layout_marginTop="5dp"
-		android:layout_marginBottom="5dp"
-		android:background="#FFFFFF"/>
+		android:layout_height="match_parent">
 
+		<TextView
+			android:id="@+id/txtTitle"
+			android:layout_width="fill_parent"
+			android:layout_height="wrap_content"
+			android:gravity="center_vertical"
+			android:layout_alignParentTop="true"
+			android:layout_alignParentBottom="true"
+			android:textStyle="bold"
+			android:textSize="16dp"
+			android:textColor="#000000"
+			android:layout_marginTop="5dp"/>
+
+		<TextView
+			android:id="@+id/txtdatetime"
+			android:layout_width="fill_parent"
+			android:layout_height="wrap_content"
+			android:gravity="center_vertical"
+			android:layout_alignParentTop="true"
+			android:layout_alignParentBottom="true"
+			android:textStyle="normal"
+			android:textSize="12dp"
+			android:textColor="#000000"/>
+
+	</LinearLayout>
+	
 	<TextView
 		android:id="@+id/txttext"
 		android:layout_width="fill_parent"
@@ -35,6 +51,10 @@
 		android:layout_marginTop="5dp"
 		android:layout_marginBottom="5dp"
 		android:background="#C6C6C6"/>
+	<TextView
+		android:layout_height="2dp"
+		android:layout_width="fill_parent"
+		android:background="#888888"/>
 
 </LinearLayout>
 

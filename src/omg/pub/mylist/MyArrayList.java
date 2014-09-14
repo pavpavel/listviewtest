@@ -8,6 +8,7 @@ public class MyArrayList
 	private ArrayList<String> t;
 	private ArrayList<String> pname;
 	
+	
 	public MyArrayList(){
 		al = new ArrayList<String>();
 		pid = new ArrayList<String>();

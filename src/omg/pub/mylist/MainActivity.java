@@ -18,7 +18,7 @@ public class MainActivity extends Activity
 		final ListView listview = (ListView) findViewById(R.id.listview);
 		try
 		{
-			MyArrayList values = readFile();
+			ArrayList<ListItem> values = readFile();
 			if(values != null){
 			MyCustomAdapter adapter = new MyCustomAdapter(this,R.layout.listview_item_row,values);
 			listview.setAdapter(adapter);
@@ -35,9 +35,9 @@ public class MainActivity extends Activity
 		{}
     }
 
-	private MyArrayList readFile() throws IOException
+	private ArrayList<ListItem> readFile() throws IOException
 	{
-		MyArrayList file = new MyArrayList();
+		ArrayList<ListItem> file = new ArrayList<ListItem>();
 		String fileName = Environment.getExternalStorageDirectory().getAbsolutePath() + "/qlog.log";
 		fileName.trim();
 		File f;
@@ -56,7 +56,8 @@ public class MainActivity extends Activity
 				//Toast.makeText(getApplicationContext(),";"+st[2]+";",Toast.LENGTH_LONG).show();
 				
 				if (!st[3].equals("302")){
-					file.add(line,st[3],st[2],st[4]);
+					file.add(new ListItem(st[3],st[4],st[2],st[0]+" " + st[1],line));
+					
 				}
 			} 
 			dis.close();

@@ -5,16 +5,17 @@ import android.content.*;
 import android.app.*;
 import java.util.zip.*;
 import android.graphics.*;
+import java.util.*;
 
-public class MyCustomAdapter extends ArrayAdapter<MyArrayList>
+public class MyCustomAdapter extends ArrayAdapter<ArrayList<ListItem>>
 {
 
 		Context context; 
 		int layoutResourceId;    
-		MyArrayList data = null;
+		ArrayList<ListItem> data = null;
 		
-		public MyCustomAdapter(Context context, int layoutResourceId, MyArrayList data) {
-			super(context,layoutResourceId,data.getLines());
+		public MyCustomAdapter(Context context, int layoutResourceId, ArrayList<ListItem> data) {
+			super(context,layoutResourceId,data);
 			this.layoutResourceId = layoutResourceId;
 			this.context = context;
 			this.data = data;
@@ -35,6 +36,7 @@ public class MyCustomAdapter extends ArrayAdapter<MyArrayList>
 				row = inflater.inflate(layoutResourceId, null);
 				holder.txtTitle = (TextView)row.findViewById(R.id.txtTitle);
 				holder.txttext = (TextView)row.findViewById(R.id.txttext);
+				holder.datetime = (TextView)row.findViewById(R.id.txtdatetime);
 				holder.linearView = (LinearLayout)row.findViewById(R.id.linearView);
 				
 				
@@ -49,9 +51,10 @@ public class MyCustomAdapter extends ArrayAdapter<MyArrayList>
 			}
 
 			
-			holder.txtTitle.setText("["+tst+"] Process ID:"+data.getPID(position)+" || Process Name:" + data.getProcessName(position) + " || Message type: [" + data.getType(position)+"]");
-			holder.txttext.setText(data.getLine(position));
-			String t = data.getType(position);
+			holder.txtTitle.setText("("+data.get(position).getPid()+") --" + data.get(position).getPn()+ " [" + data.get(position).getType()+"]");
+			holder.txttext.setText(data.get(position).getT());
+			holder.datetime.setText(data.get(position).getDt());
+			String t = data.get(position).getType();
 			if (t.equals("E")){
 				holder.linearView.setBackgroundColor(Color.RED);
 			}else if (t.equals("W")){
@@ -65,6 +68,7 @@ public class MyCustomAdapter extends ArrayAdapter<MyArrayList>
 		static class DataHolder
 		{
 			TextView txttext;
+			TextView datetime;
 			TextView txtTitle;
 			LinearLayout linearView;
 		}
