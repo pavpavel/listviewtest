@@ -22,6 +22,13 @@ public class MainActivity extends Activity
 			if(values != null){
 			MyCustomAdapter adapter = new MyCustomAdapter(this,R.layout.listview_item_row,values);
 			listview.setAdapter(adapter);
+			listview.setOnItemClickListener(new AdapterView.OnItemClickListener(){
+				@Override
+				public void onItemClick(AdapterView parent,final View view,int position,long id){
+					view.animate().setDuration(1000).alpha(50);
+					Toast.makeText(getApplicationContext(),Integer.toString(position),Toast.LENGTH_SHORT).show();
+				}
+			});
 			}
 		}
 		catch (IOException e)

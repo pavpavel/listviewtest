@@ -4,6 +4,7 @@ import android.view.*;
 import android.content.*;
 import android.app.*;
 import java.util.zip.*;
+import android.graphics.*;
 
 public class MyCustomAdapter extends ArrayAdapter<MyArrayList>
 {
@@ -28,24 +29,14 @@ public class MyCustomAdapter extends ArrayAdapter<MyArrayList>
 			String tst = null;
 			if(row == null)
 			{
-				LayoutInflater inflater = ((Activity)context).getLayoutInflater()-;			
+				LayoutInflater inflater = ((Activity)context).getLayoutInflater();			
 				holder = new DataHolder();
-				if (data.getType(position).equals("E")){
-					tst="E";
-					row = inflater.inflate(R.layout.listview_item_row,null);
-					holder.txtTitle = (TextView)row.findViewById(R.id.txttext);
-					holder.txttext = (TextView)row.findViewById(R.id.txttext);
-				}else if (data.getType(position).equals("W")){
-					tst ="W";
-					row = inflater.inflate(R.layout.listview_item_row,null);
-					holder.txtTitle = (TextView)row.findViewById(R.id.txtTitle);
-					holder.txttext = (TextView)row.findViewById(R.id.txttext);
-				}else{
-					tst="<o>";
-					row = inflater.inflate(layoutResourceId, null);
-					holder.txtTitle = (TextView)row.findViewById(R.id.txtTitle);
-					holder.txttext = (TextView)row.findViewById(R.id.txttext);
-				}
+				tst="<o>";
+				row = inflater.inflate(layoutResourceId, null);
+				holder.txtTitle = (TextView)row.findViewById(R.id.txtTitle);
+				holder.txttext = (TextView)row.findViewById(R.id.txttext);
+				holder.linearView = (LinearLayout)row.findViewById(R.id.linearView);
+				
 				
 				row.setTag(holder);
 			}
@@ -60,7 +51,14 @@ public class MyCustomAdapter extends ArrayAdapter<MyArrayList>
 			
 			holder.txtTitle.setText("["+tst+"] Process ID:"+data.getPID(position)+" || Process Name:" + data.getProcessName(position) + " || Message type: [" + data.getType(position)+"]");
 			holder.txttext.setText(data.getLine(position));
-
+			String t = data.getType(position);
+			if (t.equals("E")){
+				holder.linearView.setBackgroundColor(Color.RED);
+			}else if (t.equals("W")){
+				holder.linearView.setBackgroundColor(Color.YELLOW);
+			}else{
+				holder.linearView.setBackgroundColor(Color.WHITE);
+			}
 			return row;
 		}
 
@@ -68,6 +66,7 @@ public class MyCustomAdapter extends ArrayAdapter<MyArrayList>
 		{
 			TextView txttext;
 			TextView txtTitle;
+			LinearLayout linearView;
 		}
 	
 	
