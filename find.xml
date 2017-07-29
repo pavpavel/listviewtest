@@ -1,7 +1,7 @@
 <application>
   <component name="FindSettings">
-    <option name="customScope" value="Directory '[listviewtest] - ...'" />
-    <option name="defaultScopeName" value="Directory '[listviewtest] - ...'" />
-    <option name="SEARCH_SCOPE" value="Directory '[listviewtest] - ...'" />
+    <option name="customScope" value="Directory '[listviewtest] - ...\gen\omg\pub\mylist'" />
+    <option name="defaultScopeName" value="Directory '[listviewtest] - ...\gen\omg\pub\mylist'" />
+    <option name="SEARCH_SCOPE" value="Directory '[listviewtest] - ...\gen\omg\pub\mylist'" />
   </component>
 </application>
